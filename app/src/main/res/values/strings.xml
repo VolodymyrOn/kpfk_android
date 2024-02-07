@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">kpfk_ovi</string>
+    <string name="Welcome">Вітаю в першій практичній</string>
+    <string name="Bull">Bull</string>
 </resources>
