@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
-class MainActivity : AppCompatActivity() {
+class FirstActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         text_view.setOnClickListener{
         if(text_view.text=="Bull"){
-            val intent = Intent(this, Activity2::class.java)
+            val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
             else{
