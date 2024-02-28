@@ -9,17 +9,20 @@ import android.widget.EditText
 import android.widget.Toast
 
 @Suppress("DEPRECATION")
-class SecondActivity : AppCompatActivity() {
+class MenuActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_2)
+        setContentView(R.layout.activity_menu)
         val button=findViewById<Button>(R.id.button)
         val button2=findViewById<Button>(R.id.button2)
         val et=findViewById<EditText>(R.id.editText1)
         button.setOnClickListener{
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
             finish()
         }
-        var handler= Handler()
+        var handler: Handler = Handler()
         handler.postDelayed({
             Toast.makeText(this, "3", Toast.LENGTH_SHORT).show()
         }, 1000)
@@ -37,8 +40,8 @@ class SecondActivity : AppCompatActivity() {
             if(et.text.toString()=="calc"){
                 val intent = Intent(this, CalculatorActivity::class.java)
 
-            startActivity(intent)
-        }}
+                startActivity(intent)
+            }}
 
     }
 }
