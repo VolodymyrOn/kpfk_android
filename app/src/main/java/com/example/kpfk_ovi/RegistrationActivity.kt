@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat
 class RegistrationActivity : AppCompatActivity() {
     private val PICK_IMAGE_REQUEST = 1
     private lateinit var ImageView: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
