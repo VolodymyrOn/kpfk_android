@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -112,14 +113,32 @@ class RegistrationActivity : AppCompatActivity() {
         ImageView.setOnClickListener() {
             val CAMERA_PERMISSION_REQUEST_CODE = 100
             val READ_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 101
-            val galleryIntent = Intent(
-                Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult (galleryIntent, PICK_IMAGE_REQUEST)
+            //val galleryIntent = Intent(
+            //    Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            dispatchTakePictureIntent()
+           // startActivityForResult (galleryIntent, PICK_IMAGE_REQUEST)
         }
 
 
 
     }
+    private val REQUEST_IMAGE_CAPTURE = 1
+    fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            val bitmap = data?.extras?.get("data") as Bitmap
+            ImageView.setImageBitmap(bitmap)
+        }
+    }
+    /*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
@@ -127,7 +146,7 @@ class RegistrationActivity : AppCompatActivity() {
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
             ImageView.setImageBitmap(bitmap)
         }
-    }
+    }*/
     }
 
 
