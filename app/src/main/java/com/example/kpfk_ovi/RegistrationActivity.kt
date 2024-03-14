@@ -23,6 +23,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var ImageView: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_registration)
         val et_name = findViewById<EditText>(R.id.editTextName)
         val et_phone = findViewById<EditText>(R.id.editTextPhone)
