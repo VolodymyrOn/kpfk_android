@@ -11,28 +11,17 @@
         android:hint="@string/name" />
 
     <EditText
-        android:id="@+id/addressEditText"
+        android:id="@+id/DOWEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/address" />
+        android:hint="@string/dow" />
 
     <EditText
-        android:id="@+id/phoneNumberEditText"
+        android:id="@+id/numberEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/phone_number"
-        android:inputType="phone" />
+        android:hint="@string/number_para"
+        android:inputType="number"/>
 
-    <EditText
-        android:id="@+id/openEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/open" />
-
-    <EditText
-        android:id="@+id/closeEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/close" />
 
 </LinearLayout>

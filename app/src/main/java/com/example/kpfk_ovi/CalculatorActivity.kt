@@ -52,17 +52,18 @@ class CalculatorActivity : AppCompatActivity() {
                     second_number = et.text.toString()
                     var dor1 = 0
                     if (second_number != "") {
-                        if (znak == "+") {
+                        if (znak == getString(R.string.plus)) {
                             dor1 = first_number.toInt() + second_number.toInt()
-                        } else if (znak == "-") {
+                        } else if (znak == getString(R.string.minus)) {
                             dor1 = first_number.toInt() - second_number.toInt()
-                        } else if (znak == "*") {
+                        } else if (znak == getString(R.string.multiply)) {
                             dor1 = first_number.toInt() * second_number.toInt()
-                        } else if (znak == "/") {
-                            if (second_number != "0") {
+                        } else if (znak == getString(R.string.slash)) {
+                            if (second_number != getString(R.string.__0)) {
                                 dor1 = first_number.toInt() / second_number.toInt()
                             } else {
-                                Toast.makeText(this, "Ділити на нуль не можна", Toast.LENGTH_SHORT)
+                                Toast.makeText(this,
+                                    getString(R.string.divide_0_error), Toast.LENGTH_SHORT)
                                     .show()
                                 et.text = ""
                                 second_number = ""
@@ -93,17 +94,18 @@ class CalculatorActivity : AppCompatActivity() {
                 second_number = et.text.toString()
                 var dor1 = 0
                 if (second_number != "") {
-                    if (znak == "+") {
+                    if (znak == getString(R.string.plus)) {
                         dor1 = first_number.toInt() + second_number.toInt()
-                    } else if (znak == "-") {
+                    } else if (znak == getString(R.string.minus)) {
                         dor1 = first_number.toInt() - second_number.toInt()
-                    } else if (znak == "*") {
+                    } else if (znak == getString(R.string.multiply)) {
                         dor1 = first_number.toInt() * second_number.toInt()
-                    } else if (znak == "/") {
-                        if (second_number != "0") {
+                    } else if (znak == getString(R.string.slash)) {
+                        if (second_number != getString(R.string.__0)) {
                             dor1 = first_number.toInt() / second_number.toInt()
                         } else {
-                            Toast.makeText(this, "Ділити на нуль не можна", Toast.LENGTH_SHORT)
+                            Toast.makeText(this,
+                                getString(R.string.divide_0_error), Toast.LENGTH_SHORT)
                                 .show()
                             et.text = ""
                             second_number = ""

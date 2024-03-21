@@ -26,23 +26,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/surnameTextView"
+        android:id="@+id/numberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/DOWTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/patronimicTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp" />
+
 
 
 

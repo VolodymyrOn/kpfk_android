@@ -4,30 +4,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TeacherAdapter(private val dataSet: ArrayList<TeacherModel>): RecyclerView.Adapter<TeacherAdapter.ViewHolder>() {
+class ParaAdapter(private val dataSet: ArrayList<ParaModel>): RecyclerView.Adapter<ParaAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val surnameTextView: TextView = view.findViewById(R.id.surnameTextView)
         val nameTextView: TextView = view.findViewById(R.id.nameTextView)
-        val patronimicTextView: TextView = view.findViewById(R.id.patronimicTextView)
+        val DOWTextView: TextView = view.findViewById(R.id.DOWTextView)
+        val numberTextView: TextView = view.findViewById(R.id.numberTextView)
 
         val deleteImageView: ImageView = view.findViewById(R.id.deleteImageView)
         val updateImageView: ImageView = view.findViewById(R.id.updateImageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.teacher_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.para_item, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataSet[position]
-        holder.surnameTextView.text = item.surname
         holder.nameTextView.text = item.name
-        holder.patronimicTextView.text = item.patronimic
+        holder.DOWTextView.text = item.DOW
+        holder.numberTextView.text = item.number.toString()
 
 
         holder.deleteImageView.setOnClickListener(){
@@ -43,3 +42,4 @@ class TeacherAdapter(private val dataSet: ArrayList<TeacherModel>): RecyclerView
 
     override fun getItemCount() = dataSet.size
 }
+

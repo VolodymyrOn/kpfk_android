@@ -1,5 +1,6 @@
 package com.example.kpfk_ovi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -44,25 +45,25 @@ class MenuActivity : AppCompatActivity() {
         }
         var handler: Handler = Handler()
         handler.postDelayed({
-            Toast.makeText(this, "3", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string._3), Toast.LENGTH_SHORT).show()
         }, 1000)
         handler.postDelayed({
-            Toast.makeText(this, "2", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string._2), Toast.LENGTH_SHORT).show()
         }, 1000)
         handler.postDelayed({
-            Toast.makeText(this, "1", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string._1), Toast.LENGTH_SHORT).show()
         }, 1000)
         handler.postDelayed({
-            Toast.makeText(this, "Вітаю", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.Welcome_), Toast.LENGTH_SHORT).show()
         }, 1000)
 
         button2.setOnClickListener{
-            if(et.text.toString()=="calc"){
+            if(et.text.toString()== getString(R.string.calc)){
                 val intent = Intent(this, CalculatorActivity::class.java)
 
                 startActivity(intent)
             }
-            if(et.text.toString()=="rec"){
+            if(et.text.toString()== getString(R.string.rec)){
                 val intent = Intent(this, RecycleViewActivity::class.java)
 
                 startActivity(intent)
@@ -74,7 +75,7 @@ class MenuActivity : AppCompatActivity() {
         //recyclerView.layoutManager = LinearLayoutManager(this)
 
         adapter = ShopAdapter(dataSet)
-        recyclerView.adapter = adapter
+        //recyclerView.adapter = adapter
 
         dataSet.addAll(arrayListOf(
             ShopModel("Shop 1", "Address 1", "1234567890", "9:00", "16:00"),
@@ -94,6 +95,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun showAddShopDialog() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
@@ -105,9 +107,9 @@ class MenuActivity : AppCompatActivity() {
         val phoneNumberEditText = dialogView.findViewById<EditText>(R.id.phoneNumberEditText)
 
         builder.setView(dialogView)
-            .setTitle("Add Shop")
+            .setTitle(getString(R.string.add_shop))
             .setPositiveButton("Add") { dialog, which ->
-                // Отримуємо дані з полів вводу та додаємо новий елемент у список
+
                 val name = nameEditText.text.toString()
                 val address = addressEditText.text.toString()
                 val open = openEditText.text.toString()
@@ -115,12 +117,12 @@ class MenuActivity : AppCompatActivity() {
                 val phoneNumber = phoneNumberEditText.text.toString()
 
 
-                // Додаємо новий елемент у список та оновлюємо RecyclerView
+
                 dataSet.add(ShopModel(name, address, phoneNumber, open, close))
                 adapter.notifyDataSetChanged()
             }
             .setNegativeButton("Cancel") { dialog, which ->
-                // Відміна додавання нового елементу
+
                 dialog.cancel()
             }
             .show()

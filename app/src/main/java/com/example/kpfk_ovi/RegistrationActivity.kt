@@ -34,14 +34,14 @@ class RegistrationActivity : AppCompatActivity() {
         val et_cpassword = findViewById<EditText>(R.id.editTextConfirmPassword)
         val et_login = findViewById<EditText>(R.id.editTextLogin)
         val button = findViewById<Button>(R.id.buttonSubmit)
-        val sharedPreferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Const.MY_PREFS, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         ImageView = findViewById<ImageView>(R.id.imageView)
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
             != PackageManager.PERMISSION_GRANTED
         ) {
-            // Запит дозволу на використання камери
+
             val CAMERA_PERMISSION_REQUEST_CODE = 0
             ActivityCompat.requestPermissions(
                 this,
@@ -78,20 +78,20 @@ class RegistrationActivity : AppCompatActivity() {
                 et_DOB.text.isNullOrEmpty() || et_password.text.isNullOrEmpty() ||
                 et_cpassword.text.isNullOrEmpty() || et_login.text.isNullOrEmpty()
             ) {
-                Toast.makeText(this, "Ви не ввели потрібні дані", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.values_error), Toast.LENGTH_SHORT).show()
             } else {
                 if (et_cpassword.text.toString() == et_password.text.toString()) {
-                    editor.putString("Name", et_name.text.toString())
-                    editor.putString("Phone", et_phone.text.toString())
-                    editor.putString("DOB", et_DOB.text.toString())
-                    editor.putString("Login", et_login.text.toString())
-                    editor.putString("Password", et_password.text.toString())
+                    editor.putString(getString(R.string.name_), et_name.text.toString())
+                    editor.putString(getString(R.string.phone_), et_phone.text.toString())
+                    editor.putString(getString(R.string.dob_), et_DOB.text.toString())
+                    editor.putString(getString(R.string.login_), et_login.text.toString())
+                    editor.putString(getString(R.string.password_), et_password.text.toString())
                     editor.apply()
                     val intent = Intent(this, AuthActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this, "Пароль не співпадає", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.passwords_error), Toast.LENGTH_SHORT).show()
                     Toast.makeText(this, et_password.text.toString(), Toast.LENGTH_SHORT).show()
                     Toast.makeText(this, et_cpassword.text.toString(), Toast.LENGTH_SHORT).show()
 
