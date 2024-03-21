@@ -21,7 +21,7 @@ class AuthActivity : AppCompatActivity() {
         val password = sharedPreferences.getString("Password", "")
 
         reg.setOnClickListener{
-                val intent = Intent(this, RegistrationActivity::class.java)
+                val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
                 finish()
             }

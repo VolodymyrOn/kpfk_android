@@ -21,8 +21,22 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
         val button=findViewById<Button>(R.id.button)
         val button2=findViewById<Button>(R.id.button2)
-        val buttonAdd=findViewById<Button>(R.id.buttonAdd)
+        val para=findViewById<Button>(R.id.button_para)
+        val teacher=findViewById<Button>(R.id.button_teacher)
+        //val buttonAdd=findViewById<Button>(R.id.buttonAdd)
         val et=findViewById<EditText>(R.id.editText1)
+
+        para.setOnClickListener{
+            val intent = Intent(this, ParaActivity::class.java)
+            startActivity(intent)
+        }
+
+        teacher.setOnClickListener{
+            val intent = Intent(this, TeacherActivity::class.java)
+            startActivity(intent)
+        }
+
+
         button.setOnClickListener{
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
@@ -56,8 +70,8 @@ class MenuActivity : AppCompatActivity() {
         }
 
 
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        //recyclerView = findViewById(R.id.recyclerView)
+        //recyclerView.layoutManager = LinearLayoutManager(this)
 
         adapter = ShopAdapter(dataSet)
         recyclerView.adapter = adapter
@@ -70,9 +84,9 @@ class MenuActivity : AppCompatActivity() {
             ShopModel("Shop 5", "Address 5", "0987654321", "10:00", "17:00")
 
         ))
-        buttonAdd.setOnClickListener(){
+       /* buttonAdd.setOnClickListener(){
             showAddShopDialog()
-        }
+        }*/
 
 
 
