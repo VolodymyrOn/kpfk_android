@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ParaAdapter(private val dataSet: ArrayList<ParaModel>): RecyclerView.Adapter<ParaAdapter.ViewHolder>() {
+class ParaAdapter(private val dataSet: ArrayList<ParaModel>, val callback: (Int)->Unit): RecyclerView.Adapter<ParaAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameTextView: TextView = view.findViewById(R.id.nameTextView)
         val DOWTextView: TextView = view.findViewById(R.id.DOWTextView)
@@ -35,6 +35,9 @@ class ParaAdapter(private val dataSet: ArrayList<ParaModel>): RecyclerView.Adapt
             notifyItemRangeChanged(position, dataSet.size)
         }
 
+        holder.updateImageView.setOnClickListener(){
+            callback(position)
+        }
 
 
 

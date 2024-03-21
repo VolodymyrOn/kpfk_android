@@ -26,7 +26,9 @@ class TeacherActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView1)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        adapter = TeacherAdapter(dataSet)
+        adapter = TeacherAdapter(dataSet){position->
+            showUpdateDialog(position = position, teacherModel = dataSet[position] )
+        }
         recyclerView.adapter = adapter
 
         dataSet.addAll(arrayListOf(

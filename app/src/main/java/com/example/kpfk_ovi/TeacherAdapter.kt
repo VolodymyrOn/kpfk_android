@@ -1,6 +1,7 @@
 package com.example.kpfk_ovi
 
 import android.view.LayoutInflater
+import android.view.ScrollCaptureCallback
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -8,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TeacherAdapter(private val dataSet: ArrayList<TeacherModel>): RecyclerView.Adapter<TeacherAdapter.ViewHolder>() {
+class TeacherAdapter(private val dataSet: ArrayList<TeacherModel>, val callback: (Int)->Unit): RecyclerView.Adapter<TeacherAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val surnameTextView: TextView = view.findViewById(R.id.surnameTextView)
         val nameTextView: TextView = view.findViewById(R.id.nameTextView)
@@ -36,10 +37,16 @@ class TeacherAdapter(private val dataSet: ArrayList<TeacherModel>): RecyclerView
             notifyItemRangeChanged(position, dataSet.size)
         }
 
+        holder.updateImageView.setOnClickListener(){
+            callback(position)
+        }
+
 
 
 
     }
+
+
 
     override fun getItemCount() = dataSet.size
 }
